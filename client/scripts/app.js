@@ -12,13 +12,13 @@ var app = {
     var username = this.location.search;
 
     $('#send .submit')
-    .off('click submit')
-    .on('click', function() {
-      $(this).trigger('submit');
-    })
-    .on('submit', function() {
-      app.handleSubmit(username, $('#message').val());
-    });
+      .off('click submit')
+      .on('click', function() {
+        $(this).trigger('submit');
+      })
+      .on('submit', function() {
+        app.handleSubmit(username, $('#message').val());
+      });
   },
 
   send: (message, url) => {
@@ -55,7 +55,7 @@ var app = {
   },
 
   clearMessages: () => {
-      $('#chats').empty();
+    $('#chats').empty();
   },
 
   renderMessage: (dataObj) => {
@@ -89,23 +89,23 @@ var app = {
     //add click handles for usernames and grab val and pass to other fn
     $('.username').on('click', function() {
       app.handleUsernameClick($(this).text());
-    })
+    });
   },
 
-  renderRoom: function(roomName){
+  renderRoom: function(roomName) {
     var room = $('<option class="rooms"></option>');
     room.append(roomName);
     $('#roomSelect').append(room);
   },
 
-  handleUsernameClick: function(userName){
+  handleUsernameClick: function(userName) {
     //add selected name to friends list obj
     app.friends[userName] = userName;
   },
 
-  handleSubmit: function(urlName, messageText){
+  handleSubmit: function(urlName, messageText) {
     //remove extra from username in url
-    var name = urlName.replace('?username=','');
+    var name = urlName.replace('?username=', '');
     //build the obj to pass into the send method
     var message = {};
     message.username = name;
